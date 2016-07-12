@@ -1,4 +1,4 @@
-export * as actionTypes from './actions'
+export * as eventTypes from './eventTypes'
 
 export default function main (options) {
   if (!window.analytics) {
