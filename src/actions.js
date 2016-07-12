@@ -1,0 +1,5 @@
+export const IDENTIFY = 'identify'
+export const TRACK    = 'track'
+export const PAGE     = 'page'
+export const ALIAS    = 'alias'
+export const GROUP    = 'group'
