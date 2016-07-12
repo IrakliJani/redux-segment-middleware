@@ -8,7 +8,7 @@ export default function main (options) {
   return middleware(options)
 }
 
-const middleware = options => next => action => {
+const middleware = options => store => next => action => {
   if (!action.meta || !action.meta.analytics) {
     return next(action)
   }
@@ -19,7 +19,9 @@ const middleware = options => next => action => {
     throw new Error('Action type is not set...')
   }
 
-  window.analytics[type](name || action.type, payload)
+  window.analytics[type](name || action.type, options.normalizer
+    ? options.normalizer(payload)
+    : payload)
 
   return next(action)
 }
