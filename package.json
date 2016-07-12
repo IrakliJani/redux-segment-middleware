@@ -1,0 +1,29 @@
+{
+  "name": "redux-segment-middleware",
+  "version": "0.0.1",
+  "description": "Segment.io Redux middleware",
+  "author": "Irakli Janiashvili <irakli.janiashvili@gmail.com>",
+  "keywords": [
+    "redux",
+    "segment",
+    "analytics"
+  ],
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel --out-dir lib src",
+    "watch": "babel --watch --out-dir lib src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irakli-janiashvili/redux-segment-middleware.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/irakli-janiashvili/redux-segment-middleware/issues"
+  },
+  "homepage": "https://github.com/irakli-janiashvili/redux-segment-middleware#readme",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4"
+  }
+}

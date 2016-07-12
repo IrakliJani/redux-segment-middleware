@@ -1,3 +1,6 @@
+# Exclude Lib
+/lib
+
 # Logs
 logs
 *.log
