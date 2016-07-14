@@ -1,12 +1,15 @@
 import * as eventTypes from './eventTypes'
+import { generatePayload } from './helpers'
 
-export default function track (action, options) {
+export default function track (type, action, options) {
   const { analytics: params } = action.meta
-  const payload = options.normalizer
-    ? options.normalizer(params.payload)
-    : params.payload
+  const payload = generatePayload({
+    action,
+    payload: params.payload,
+    normalize: options.normalize
+  })
 
-  switch (params.type) {
+  switch (type) {
     case eventTypes.TRACK:
       return window.analytics.track(params.name || action.type, payload)
 

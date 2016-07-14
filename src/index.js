@@ -11,13 +11,16 @@ export default function segment (options) {
       return next(action)
     }
 
-    const { type } = action.meta.analytics
+    const { analytics } = action.meta
+    const type = typeof analytics === 'object'
+      ? analytics.type
+      : analytics
 
     if (!type) {
       throw new Error('Event type is not set...')
     }
 
-    track(action, options)
+    track(type, action, options)
 
     return next(action)
   }
