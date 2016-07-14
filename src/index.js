@@ -1,27 +1,24 @@
 export * as eventTypes from './eventTypes'
+import track from './track'
 
-export default function main (options) {
+export default function segment (options) {
   if (!window.analytics) {
     throw new Error('Segment.io analytics.js library is not loaded')
   }
 
-  return middleware(options)
-}
+  return store => next => action => {
+    if (!action.meta || !action.meta.analytics) {
+      return next(action)
+    }
 
-const middleware = options => store => next => action => {
-  if (!action.meta || !action.meta.analytics) {
+    const { type } = action.meta.analytics
+
+    if (!type) {
+      throw new Error('Event type is not set...')
+    }
+
+    track(action, options)
+
     return next(action)
   }
-
-  const { name, type, payload } = action.meta.analytics
-
-  if (!type) {
-    throw new Error('Action type is not set...')
-  }
-
-  window.analytics[type](name || action.type, options.normalizer
-    ? options.normalizer(payload)
-    : payload)
-
-  return next(action)
 }
