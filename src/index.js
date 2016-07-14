@@ -6,7 +6,7 @@ export default function segment (options) {
     throw new Error('Segment.io analytics.js library is not loaded')
   }
 
-  return store => next => action => {
+  return () => next => action => {
     if (!action.meta || !action.meta.analytics) {
       return next(action)
     }
