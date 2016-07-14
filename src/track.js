@@ -17,13 +17,18 @@ export default function track (type, action, options) {
       return window.analytics.identify(params.id, payload)
 
     case eventTypes.PAGE:
-      return console.warn('not implemented yet')
+      if (params.category && params.name)
+        return window.analytics.page(params.category, params.name, payload)
+      else if (params.name)
+        return window.analytics.page(params.name, payload)
+      else
+        return window.analytics.page(payload)
 
     case eventTypes.ALIAS:
-      return console.warn('not implemented yet')
+      return window.analytics.alias(params.id, params.previousId)
 
     case eventTypes.GROUP:
-      return console.warn('not implemented yet')
+      return window.analytics.group(params.id, payload)
 
     default:
       throw new Error('Event type is not correct')
