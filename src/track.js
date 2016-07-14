@@ -14,7 +14,7 @@ export default function track (type, action, options) {
       return window.analytics.track(params.name || action.type, payload)
 
     case eventTypes.IDENTIFY:
-      return window.analytics.track(params.id, payload)
+      return window.analytics.identify(params.id, payload)
 
     case eventTypes.PAGE:
       return console.warn('not implemented yet')
