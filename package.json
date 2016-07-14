@@ -1,6 +1,6 @@
 {
   "name": "redux-segment-middleware",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Segment.io Redux middleware",
   "author": "Irakli Janiashvili <irakli.janiashvili@gmail.com>",
   "keywords": [
